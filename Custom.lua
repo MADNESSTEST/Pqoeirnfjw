@@ -4,7 +4,9 @@
 
 -- Instances:
 
-local player = game.Players.LocalPlayer
+local Open2 = Instance.new("ScreenGui")
+
+local Open = Instance.new("TextButton")
 
 local ScreenGui = Instance.new("ScreenGui")
 
@@ -56,7 +58,30 @@ local MusicBar = Instance.new("TextButton")
 
 --Properties:
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Name = "ScreenGui"
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+
+Open2.Name = "Tools"
+Open2.Parent = game.CoreGui
+Open2.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Open.Name = "Open"
+Open.Parent = Open2
+Open.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Open.Position = UDim2.new(0, 0, 0.451871663, 0)
+Open.Size = UDim2.new(0, 50, 0, 40)
+Open.Font = Enum.Font.SourceSans
+Open.Text = "Open"
+Open.TextColor3 = Color3.fromRGB(255, 255, 255)
+Open.TextScaled = true
+Open.TextSize = 16.000
+Open.Draggable = true
+Open.TextWrapped = true
+Open.MouseButton1Click:Connect(function()
+script.Parent.Main_GUI.Visible = true
+end)
 
 Main_GUI.Name = "Main_GUI"
 
@@ -162,7 +187,7 @@ Delay.Size = UDim2.new(0, 59, 0, 34)
 
 Delay.Font = Enum.Font.SourceSans
 
-Delay.Text = "0.070"
+Delay.Text = ".5"
 
 Delay.TextColor3 = Color3.new(255, 255, 255)
 
@@ -524,7 +549,7 @@ MusicBar.TextXAlignment = Enum.TextXAlignment.Left
 
 function SCRIPT_RPQO89_FAKESCRIPT() -- ScreenGui.Control_Script 
 
-	getfenv().script = Instance.new('LocalScript', ScreenGui)	print('Credits: PandaExploits')
+	getfenv().script = Instance.new('LocalScript', ScreenGui)	print('Credits: Nugga and Panda Hub')
 
 	local Saving = script.Parent.Adding_Frame
 
@@ -585,6 +610,15 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/lasudueneuxjsn/loo.lu
 	script.Parent.Main_GUI.TopBar.Exit.MouseButton1Down:Connect(function()
 
 		script.Parent.Main_GUI.Visible = false; GUI_Toggle = true
+		
+local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))();
+local Notify = AkaliNotif.Notify;
+
+Notify({
+Description = "UI Closed click (Open) to show the ui";
+Title = "Panda Staff";
+Duration = 2;
+});
 
 	end)
 
@@ -798,17 +832,17 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/lasudueneuxjsn/loo.lu
 
 				if Notes == '[' then
 
-					GroupNote = true
+					GroupNote = false
 
-					Delay = '0'
-					
+					continue
+
 				elseif Notes == ']' then
 
 					GroupNote = true
 
 					Delay = DefaultDelay
 					
-			    elseif Notes == '' then
+					elseif Notes == '' then
 					
 					continue
 
@@ -824,6 +858,14 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/lasudueneuxjsn/loo.lu
 
 					Delay = DefaultDelay
 
+				elseif Notes == '   ' then
+
+					wait(Delay)
+				
+				elseif Notes == '  ' then
+
+					wait(Delay)
+				
 				elseif Notes == ' ' then
 
 					wait(Delay)
